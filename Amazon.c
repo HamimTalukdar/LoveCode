@@ -1,23 +1,22 @@
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-
-void binary_to_string(char* s) {
-    int len = strlen(s);
-    for (int i = 0; i < len; i += 8) {
-        int sum = 0;
-        for (int j = i; j < i + 8; j++) {
-            sum += (s[j] - '0') * pow(2, 7 - j + i);
-        }
-        putchar(sum);
+#include<stdio.h>
+int main()
+{
+  int i,j,k,n=10;
+  for(i=0,k=0;i<13;i++,k=k+2){
+    if(i==5){ 
+      k=k-1;
     }
-}
-
-int main() {
-    char str[100];
-    printf("Enter binary representation of the string: ");
-    gets(str);
-    printf("String: ");
-    binary_to_string(str);
-    return 0;
+    for(j=0;j<31;j++){
+        if(i<3 && ((j>=(n-7)-k && j<=(n-1)+k) || (j>=(2*n+1)-k && j<=(2*n+7)+k))){
+          printf("*");
+        }
+        else if(i>2 && (j>=k-7 && j<=37-k) || (i==12 && j==15 )){
+          printf("*");
+        }
+        else 
+        printf(" ");
+    }
+    printf("\n");
+  }
+  return 0;  
 }
